@@ -1,10 +1,8 @@
 package org.firstinspires.ftc.teamcode.Addies_Code;
 
-import com.qualcomm.hardware.lynx.LynxModule;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.hardware.HardwareMap;
-import com.qualcomm.robotcore.robocol.Command;
 
 
 public class AddieHardwareFile {
@@ -87,63 +85,61 @@ public class AddieHardwareFile {
         double frontR = (gamepadX - gamepadY - gamepadZ);
         double backL = (gamepadX - gamepadY + gamepadZ);
         double backR = (gamepadX + gamepadY + gamepadZ);
-        frontLeft.setPower(frontL);
-        frontRight.setPower(frontR);
-        backLeft.setPower(backL);
-        backRight.setPower(backR);
+        frontLeft.setPower(frontL * maxOutput);
+        frontRight.setPower(frontR * maxOutput);
+        backLeft.setPower(backL * maxOutput);
+        backRight.setPower(backR * maxOutput);
     }
 
-    public void forwardMovement() {
+    public void runCommand(String CommandName, double speed) {
 
-        movement(0, 1, 0);
-    }
+        CommandName = CommandName.toUpperCase();
 
-    public void backwardMovement() {
-        movement(0, -1, 0);
-    }
-
-    public void strafeRight() {
-        movement(1, 0, 0);
-    }
-
-    public void strafeLeft() {
-        movement(-1, 0, 0);
-    }
-
-    public void slideUp() {
-        CascadeLift.setPower(1);
-    }
-
-    public void slideDrop() {
-        CascadeLift.setPower(-1);
-    }
-
-    public void rotateLeft() {
-        movement(0, 0, -1);
-    }
-
-    public void rotateRight() {
-        movement(0, 0, 1);
-    }
-
-    public void addSequential(String commandName, double speed){
-
-        String CommandName = commandName;
-
-        if(CommandName == "Back"){movement(0, -speed, 0);}
-        if(CommandName == "Forward"){movement(0, speed, 0);}
-        if(CommandName == "Left"){movement(-speed, 0, 0);}
-        if(CommandName == "Right"){movement(speed, 0, 0);}
-        if(CommandName == "ForwardLeft"){movement(-speed, speed, 0);}
-        if(CommandName == "ForwardRight"){movement(speed, speed, 0);}
-        if(CommandName == "BackLeft"){movement(-speed, -speed, 0);}
-        if(CommandName == "BackRight"){movement(speed, -speed, 0);}
-        if(CommandName == "LiftUp"){CascadeLift.setPower(speed);}
-        if(CommandName == "LiftDown"){CascadeLift.setPower(-speed);}
-        if(CommandName == "SlideOpen"){LinearActuator.setPower(speed);}
-        if(CommandName == "SlideClose"){LinearActuator.setPower(-speed);}
-        if(CommandName == "RotateRight"){movement(0,0,speed);}
-        if(CommandName == "RotateLeft"){movement(0,0,-speed);}
+        if (CommandName == "BACK") {
+            movement(0, -speed, 0);
+        }
+        if (CommandName == "FORWARD") {
+            movement(0, speed, 0);
+        }
+        if (CommandName == "LEFT") {
+            movement(-speed, 0, 0);
+        }
+        if (CommandName == "RIGHT") {
+            movement(speed, 0, 0);
+        }
+        if (CommandName == "FORWARDLEFT") {
+            movement(-speed, speed, 0);
+        }
+        if (CommandName == "FORWARDRIGHT") {
+            movement(speed, speed, 0);
+        }
+        if (CommandName == "BACKLEFT") {
+            movement(-speed, -speed, 0);
+        }
+        if (CommandName == "BACKRIGHT") {
+            movement(speed, -speed, 0);
+        }
+        if (CommandName == "LIFTUP") {
+            CascadeLift.setPower(speed);
+        }
+        if (CommandName == "LIFTDOWN") {
+            CascadeLift.setPower(-speed);
+        }
+        if (CommandName == "SLIDEOPEN") {
+            LinearActuator.setPower(speed);
+        }
+        if (CommandName == "SLIDECLOSE") {
+            LinearActuator.setPower(-speed);
+        }
+        if (CommandName == "ROTATERIGHT") {
+            movement(0, 0, speed);
+        }
+        if (CommandName == "ROTATELEFT") {
+            movement(0, 0, -speed);
+        }
+        if (CommandName == "WAIT") {
+            movement(0, 0, 0);
+        }
 
     }
 }
