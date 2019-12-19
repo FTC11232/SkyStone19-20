@@ -125,7 +125,7 @@ public class AddieHardwareFile {
         if (CommandName == "LIFTDOWN") {
             CascadeLift.setPower(-speed);
         }
-        if (CommandName == "SLIDEOPEN") {
+        if (CommandName == "CLAMPOPEN") {
             LinearActuator.setPower(speed);
         }
         if (CommandName == "SLIDECLOSE") {

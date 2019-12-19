@@ -4,7 +4,7 @@ import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.util.ElapsedTime;
 
-@Autonomous(name = "Basic Auto") //AutoMouse
+@Autonomous(name = "AutoRedFoundation") //AutoMouse
 //@Disabled
 public class BasicAuto extends LinearOpMode {
 
@@ -23,7 +23,24 @@ public class BasicAuto extends LinearOpMode {
         while (opModeIsActive() && firstCall) {
             // CLIP TIME VALUES BASED ON TRIAL AND ERROR
 
-            timedCommand("Wait", 1, 25);
+
+            timedCommand("FORWARD", 1, 1);
+            timedCommand("WAIT", 0, 0.5);
+            timedCommand("RIGHT", 1, 2.5);
+            timedCommand("WAIT", 0, 0.5);
+            timedCommand("LIFTUP", 1, 0.3);
+            timedCommand("WAIT", 0, 0.5);
+            timedCommand("FORWARD", 1, 0.2);
+            timedCommand("WAIT", 0, 0.5);
+            timedCommand("LIFTDOWN", 1, 0.3);
+            timedCommand("WAIT", 0, 0.5);
+            timedCommand("BACKWARD", 1, 1.2);
+            timedCommand("WAIT", 0, 0.5);
+            timedCommand("LIFTUP", 1,0.2);
+            timedCommand("WAIT", 0, 0.5);
+            timedCommand("LEFT", 1, 2.5);
+            timedCommand("WAIT", 0, 0.5);
+
 
             firstCall = false;
 
@@ -36,6 +53,9 @@ public class BasicAuto extends LinearOpMode {
         while (runtime.seconds() <= time && opModeIsActive()) {
             newHwFile.runCommand(CommandName, speed);
         }
+        /*
+            if Boolean fristcall
+        }  */
 
     }
 
