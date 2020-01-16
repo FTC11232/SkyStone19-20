@@ -6,7 +6,7 @@ import com.qualcomm.robotcore.util.ElapsedTime;
 
 @Autonomous(name = "AutoRedFoundation") //AutoMouse
 //@Disabled
-public class BasicAuto extends LinearOpMode {
+public class AutoBlueFoundation extends LinearOpMode {
 
     private ElapsedTime runtime = new ElapsedTime();
     AddieHardwareFile newHwFile = new AddieHardwareFile();
@@ -26,7 +26,7 @@ public class BasicAuto extends LinearOpMode {
 
             timedCommand("FORWARD", 1, 1);
             timedCommand("WAIT", 0, 0.5);
-            timedCommand("RIGHT", 1, 2.5);
+            timedCommand("LEFT", 1, 2.5);
             timedCommand("WAIT", 0, 0.5);
             timedCommand("LIFTUP", 1, 0.3);
             timedCommand("WAIT", 0, 0.5);
@@ -38,7 +38,7 @@ public class BasicAuto extends LinearOpMode {
             timedCommand("WAIT", 0, 0.5);
             timedCommand("LIFTUP", 1,0.2);
             timedCommand("WAIT", 0, 0.5);
-            timedCommand("LEFT", 1, 2.5);
+            timedCommand("RIGHT", 1, 2.5);
             timedCommand("WAIT", 0, 0.5);
 
 
@@ -54,7 +54,7 @@ public class BasicAuto extends LinearOpMode {
             newHwFile.runCommand(CommandName, speed);
         }
         /*
-            if Boolean fristcall
+            if Boolean firstcall
         }  */
 
     }
