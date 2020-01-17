@@ -119,10 +119,10 @@ public class AddieHardwareFile {
         if (CommandName == "BACKRIGHT") {
             movement(speed, -speed, 0);
         }
-        if (CommandName == "LIFTUP") {
+        if (CommandName == "LIFTDOWN") {
             CascadeLift.setPower(speed);
         }
-        if (CommandName == "LIFTDOWN") {
+        if (CommandName == "LIFTUP") {
             CascadeLift.setPower(-speed);
         }
         if (CommandName == "CLAMPOPEN") {
