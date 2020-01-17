@@ -39,45 +39,37 @@ public class AddieTeleOp extends LinearOpMode {
 
         waitForStart();
 
-        while (!running){
+        while (opModeIsActive()) ;
+        {
 
-            if(opModeIsActive()){running = true;}
+            telemetry.clearAll();
 
-        }
-
-        while (running){
-            while (opModeIsActive()) ;
-            {
-
-                telemetry.clearAll();
-
-                gamepadX = robot.deadZone(gamepad1.left_stick_y, 0.2);
-                gamepadY = robot.deadZone(gamepad1.left_stick_x, 0.2);
-                gamepadZ = robot.deadZone(robot.zManipulation(gamepad1.left_trigger, gamepad1.right_trigger),
-                        0.2);
-                gamepadLift = robot.deadZone(gamepad2.left_stick_y, 0.2);
-                gamepadClamp = robot.deadZone(gamepad2.right_stick_x, 0.2);
+            gamepadX = robot.deadZone(gamepad1.left_stick_y, 0.2);
+            gamepadY = robot.deadZone(gamepad1.left_stick_x, 0.2);
+            gamepadZ = robot.deadZone(robot.zManipulation(gamepad1.left_trigger, gamepad1.right_trigger),
+                    0.2);
+            gamepadLift = robot.deadZone(gamepad2.left_stick_y, 0.2);
+            gamepadClamp = robot.deadZone(gamepad2.right_stick_x, 0.2);
 
 
-                frontL = -(-gamepadX + gamepadY + gamepadZ);
-                frontR = -(gamepadX + gamepadY + gamepadZ);
-                backL = -(gamepadX + gamepadY - gamepadZ); //these are all the correct drive equations
-                backR = -(-gamepadX + gamepadY - gamepadZ);
-                lift = gamepadLift;
-                clamp = gamepadClamp;
+            frontL = -(-gamepadX + gamepadY + gamepadZ);
+            frontR = -(gamepadX + gamepadY + gamepadZ);
+            backL = -(gamepadX + gamepadY - gamepadZ); //these are all the correct drive equations
+            backR = -(-gamepadX + gamepadY - gamepadZ);
+            lift = gamepadLift;
+            clamp = gamepadClamp;
 
-                telemetry.addData("Lift Values", "Lift" + gamepadLift + "||" + "Clamp" + gamepadClamp);
-                telemetry.addData("GamePad Values", "Left Stick X" + gamepadX + "||" + "Left Stick X" + gamepadY + "||" + "Rotation Z" + gamepadZ);
-                telemetry.update();
+            telemetry.addData("Lift Values", "Lift" + gamepadLift + "||" + "Clamp" + gamepadClamp);
+            telemetry.addData("GamePad Values", "Left Stick X" + gamepadX + "||" + "Left Stick X" + gamepadY + "||" + "Rotation Z" + gamepadZ);
+            telemetry.update();
 
-                frontLeft.setPower(frontL * maxOutput);
-                frontRight.setPower(frontR * maxOutput);
-                backLeft.setPower(backL * maxOutput);
-                backRight.setPower(backR * maxOutput);
-                CascadeLift.setPower(lift * maxOutput);
-                LinearActuator.setPower(clamp * maxOutput);
+            frontLeft.setPower(frontL * maxOutput);
+            frontRight.setPower(frontR * maxOutput);
+            backLeft.setPower(backL * maxOutput);
+            backRight.setPower(backR * maxOutput);
+            CascadeLift.setPower(lift * maxOutput);
+            LinearActuator.setPower(clamp * maxOutput);
 
-            }
         }
     }
 
