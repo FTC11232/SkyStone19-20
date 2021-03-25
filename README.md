@@ -1,4 +1,6 @@
 ## NOTICE
+## This is a fork, and it has been changed, plus this is a team fork and I dont know if this is public.
+Before this fancy thingy starts, this has not been updated in more then a year and may not work in the current FTC season, plus its SkyStone so its not valid for the current season.
 
 This repository contains the public FTC SDK for the SKYSTONE (2019-2020) competition season.  
 
